@@ -1,7 +1,9 @@
+import { toDoStore } from "../../state/toDoStore";
 import NumbToDo from "../NumbToDo/NumbToDo";
 
 export const ToDoView = () => {
-  const tasks = [];
+  const tasks = toDoStore((state) => state.tasks);
+  const removeToDo = toDoStore((state) => state.removeToDo);
 
   return (
     <div className="bg-slate-200 ">
@@ -21,6 +23,7 @@ export const ToDoView = () => {
                 <tr
                   key={id}
                   className="group/task odd:bg-white even:bg-slate-100"
+                  onClick={() => removeToDo(id)}
                 >
                   <td className="w-[50px] border p-1 rounded-bl-lg group-hover/task:bg-sky-100">
                     {id}
